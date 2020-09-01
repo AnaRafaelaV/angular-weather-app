@@ -1,0 +1,36 @@
+.forecastTable {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    background-color: white;
+}
+
+.mat-cell {
+    color: #081e3d;
+}
+
+.mat-header-cell {
+    font-size: 15px;
+    color: #a85c16;
+}
+
+th.mat-sort-header-sorted {
+    color: #a85c16;
+}
+
+.info {
+    margin-top: 20px;
+}
+
+.orderby {
+    width: 100%;
+    margin-left: 59%;
+}

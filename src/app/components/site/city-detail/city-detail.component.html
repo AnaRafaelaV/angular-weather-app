@@ -1,0 +1,41 @@
+<div layout="row" layout-xs="column" class="info">
+    <img flex style="width: 50px; height: 50px; padding: 20px; vertical-align: middle;" src="assets/images/sun.png">
+    <span flex style="color: #b0d0f1; font-size: 20px;">Here you can see all selected cities weather forecast!</span>
+</div>
+
+<div layout="row" layout-xs="column" class="forecastTable">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="tMax">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Highest Temperature </th>
+            <td mat-cell *matCellDef="let element"> {{element.tMax}} ºC </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="tMin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lowest Temperature </th>
+            <td mat-cell *matCellDef="let element"> {{element.tMin}} ºC</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="sunrise">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sunrise Hour</th>
+            <td mat-cell *matCellDef="let element"> {{element.sunrise}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sunset">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sunset Hour</th>
+            <td mat-cell *matCellDef="let element"> {{element.sunset}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

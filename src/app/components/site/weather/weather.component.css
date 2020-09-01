@@ -1,0 +1,57 @@
+.chip-list {
+    width: 500px;
+    background-color: #081e3d;
+    border-radius: 20px;
+    align-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.first {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form {
+    width: 100%;
+}
+
+.centered {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    background-image: url('../../../../assets/images/25501.jpg');
+    background-size: 100% 100%;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #b0d0f1 !important;
+    padding: 5px;
+}
+
+ ::ng-deep.mat-form-field-underline {
+    background-color: #b0d0f1 !important;
+}
+
+ ::ng-deep.mat-form-field-ripple {
+    /*change color when focused*/
+    background-color: #b0d0f1 !important;
+}
+
+input {
+    width: 100%;
+    color: #b0d0f1;
+    caret-color: #b0d0f1;
+    padding: 5px;
+}
+
+.myButton {
+    background-color: #b0d0f1;
+    color: #081e3d;
+    border-radius: 30px;
+    margin-top: 10px;
+}

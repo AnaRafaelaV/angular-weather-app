@@ -1,0 +1,43 @@
+<section class="centered" layout="row" layout-xs="column">
+    <div layout="column" layout-xs="column" class="container">
+        <div flex class="first">
+            <div flex class="container text-center">
+                <h1 style="color: #081e3d;">Welcome</h1>
+                <p style="color: #b0d0f1;">Select at least three cities to compare weather information</p>
+            </div>
+        </div>
+        <div flex class="form">
+            <mat-form-field class="chip-list">
+                <mat-chip-list #chipList aria-label="City selection">
+                    <mat-chip style="background-color: #b0d0f1;" *ngFor="let city of selectedCities" [selectable]="selectable" [removable]="removable" (removed)="remove(city)">
+                        <label style="color: #081e3d;">{{city}}</label>
+                        <mat-icon matChipRemove *ngIf=" removable ">X</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+                <div class="cursor ">
+                    <input matInput type="text " placeholder="Search for a city here " #cityInput [formControl]="myControl " [matAutocomplete]="auto " [matChipInputFor]="chipList " [matChipInputSeparatorKeyCodes]="separatorKeysCodes
+                            " (matChipInputTokenEnd)="add($event) ">
+                </div>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event) ">
+                    <mat-option *ngFor="let city of filteredCities | async " [value]="city ">
+                        {{city.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div flex class="button ">
+            <button md-button class="myButton " mat-raised-button [disabled]='nCities' (click)="submitForm() ">Show information</button>
+        </div>
+    </div>
+</section>
+
+<section layout="row" layout-xs="column" *ngIf="showTable ">
+    <app-city-detail></app-city-detail>
+    <app-diagram></app-diagram>
+</section>
+<section layout="row" layout-xs="column" *ngIf="!showTable ">
+    <div layout="row" layout-xs="column">
+        <img flex style="width: 50px; height: 50px; padding: 20px; vertical-align: middle;" src="assets/images/sun.png">
+        <span flex style="color: #b0d0f1; font-size: 10px;">To see more select three cities!</span>
+    </div>
+</section>
