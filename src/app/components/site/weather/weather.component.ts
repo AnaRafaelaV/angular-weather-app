@@ -44,7 +44,6 @@ export class WeatherComponent implements OnInit{
   constructor(private selectedData: DataSelectedService, private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
-    console.log(this.myControl.value);
       this.filteredCities = this.myControl.valueChanges.pipe(
         startWith(null),
         map((city: string | null) => city ? this._filter(city) : this.forecast.slice()));
@@ -75,8 +74,9 @@ export class WeatherComponent implements OnInit{
       }
       else{
         this._snackBar.open("This city is not available!",'',{panelClass: ['darkblue-snackbar']})._dismissAfter(2000);
-        console.log('não está na lista');
-        // fazer um alert
+      }
+      if(this.showTable){
+        this.showTable = false;
       }
     }
 
@@ -86,6 +86,7 @@ export class WeatherComponent implements OnInit{
     }
 
     this.myControl.setValue(null);
+    setTimeout(()=> {this.matAutocomplete.showPanel})
   }
 
   remove(city: string): void {
@@ -96,37 +97,37 @@ export class WeatherComponent implements OnInit{
         this.nCities = true;
         this.showTable = false;
       }else{
+        if(this.showTable){
+          this.showTable = false;
+        }
         console.log('tem de selecionar pelo menos 3')
       }
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    console.log(this.selectedCities.toString());
+    if(this.showTable){
+      this.showTable = false;
+    }
     if (this.selectedCities.length>=2){
       this.nCities = false;
     }else{
       console.log('tem de selecionar pelo menos 3')
     }
-
-    console.log('selected');
     if(!this._selected(event.option.viewValue)){
       this.selectedCities.push(event.option.viewValue);
     }
     else{
       this._snackBar.open("This city is already selected!",'',{panelClass: ['darkblue-snackbar']})._dismissAfter(2000);
       console.log('já foi selecionado');
-      // fazer um alert
     }
     this.cityInput.nativeElement.value = "";
     event.option.value= null;
     this.myControl.setValue(null);
-    
   }
 
   private _filter(city : string): City[] {
     if(typeof(city) === 'string'){
-      console.log('aquiiiii');
     const filterValue = city.toLowerCase();
     return this.forecast.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
     }else{
@@ -150,8 +151,6 @@ export class WeatherComponent implements OnInit{
   }
 
   private _selected(city:String): boolean{
-    console.log('verificar');
-    console.log(city);
    if(this.selectedCities.includes(city)){
       return true;
    }else{
