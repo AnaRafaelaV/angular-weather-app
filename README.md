@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
 ## Run WebApp
-Access the `angular-weather-app` folder
+Access the `angular-weather-app` folder:
 ```
 cd angular-weather-app
 ```
