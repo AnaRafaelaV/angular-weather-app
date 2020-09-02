@@ -14,10 +14,4 @@ Install all dependencies:
 npm install
 ```
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
-```
-ng serve
-```
 Or run `ng serve --o` to open `http://localhost:4200/` automatically in default browser. 
-```
-ng serve --o
-```
